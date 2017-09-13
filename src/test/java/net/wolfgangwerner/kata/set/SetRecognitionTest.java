@@ -38,6 +38,8 @@ public class SetRecognitionTest {
      */
 
     @Test
+    //THIS TEST IS FLAKEY, the reason is that the set recognition algorithm is wrong
+    //it finds only valid sets, but not neccesarily all of them
     public void singleSetMatchingShapePatternAndColorIsFound() {
         Map<CardKey, Card> testCards = new HashMap<>();
         Card c0 = Card.of(Shape.PEANUT, Pattern.FULL, Color.GREEN,Count.TWO);
