@@ -1,6 +1,6 @@
 = SET Card Game Code Kata
 
-SET is an awesome card game that really makes you think and tests your pattern matching ability.
+SET is an awesome card game that really makes you think and tests your pattern matching abilities.
 In this kata, we implement a model of the game and write an algorithm to find matching SETs.
 I think that this kata provides a number of interesting implementation problems
 and allows for implementation in different styles.
@@ -16,8 +16,32 @@ Each SET card shows four features with three possible values for each:
 * *Number*: one, two or three
 * *Shape*: oval, squiggle or diamond
 * *Shading*: solid, striped or outlined
-A deck of SET cards consists of 
 
-== Challenges
+A SET is defined as three cards for which either all values of all features, looked at one by one are _either_ all the same on each card _or_ different on each card.
+All four features must separately satisfy this rule to make a valid set.
+To spell it out, for a valid set all of the conditions below must be met:
+
+* The color on each card must be _either_ all the same _or_ all different throughout the SET
+* The number on each card must be _either_ all the same _or_ all different throughout the SET
+* The shape on each card must be _either_ all the same _or_ all different throughout the SET
+* The shading on each card must be _either_ all the same _or_ all different throughout the SET
+
+A deck of SET cards consists of exactly one card for each permutation of values of the four features, totalling 81 cards.
+
+You can find the official instructions https://www.setgame.com/sites/default/files/instructions/SET%20INSTRUCTIONS%20-%20ENGLISH.pdf[here (PDF)].
+The https://en.wikipedia.org/wiki/Set_(game)[Wikipedia article] also has alternative phrasing for the rules and more information
+that might com in handy.
+
+From the deck, a hand of 12 cards is placed on the table. If a player finds a SET, she shouts "SET" and takes it.
+In case no one finds a set, three additional cards are added. If the number of cards laid out drops below 12, the missing cards
+are replaced to that there are always at least 12 cards on the table.
+
+== Implementation Challenges
+
+* Obviously, the algorithm for finding SETs is interesting in terms of runtime behaviour
+* Try to generalize the problem for an arbitrary number of properties and deck sizes. Don't get discouraged: Finding out whether a SET exists in the generalized scenario is NP-complete.
+
+
+If you want to dig deeper, read http://pbg.cs.illinois.edu/papers/set.pdf and https://arxiv.org/pdf/1309.6504.pdf.
 
 
