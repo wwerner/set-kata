@@ -27,7 +27,7 @@ public class DeckTest {
         Card c = d.draw();
         assertNotNull(c.getColor());
         assertNotNull(c.getCount());
-        assertNotNull(c.getPattern());
+        assertNotNull(c.getShading());
         assertNotNull(c.getShape());
     }
 
@@ -35,6 +35,6 @@ public class DeckTest {
     public void drawnCardIsRemovedFromDeck() throws NoSuchCardInDeckException {
         Deck d = new Deck();
         Card c = d.draw();
-        d.getCard(c.getShape(), c.getPattern(), c.getColor(), c.getCount());
+        d.getCard(c.getShape(), c.getShading(), c.getColor(), c.getCount());
     }
 }

@@ -71,6 +71,6 @@ class CardKey {
     }
 
     static CardKey of(Card c) {
-        return of(c.getShape(),c.getPattern(),c.getColor(),c.getCount());
+        return of(c.getShape(),c.getShading(),c.getColor(),c.getCount());
     }
 }

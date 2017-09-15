@@ -24,8 +24,8 @@ public class CardSet {
         boolean allShapesEqual = first.getShape() == second.getShape() && first.getShape() == third.getShape();
         boolean shapesFormSet = allShapesDifferent || allShapesEqual;
 
-        boolean allPatternsDifferent = (first.getPattern() != second.getPattern()) && (first.getPattern() != third.getPattern()) && (second.getPattern() != third.getPattern());
-        boolean allPatternsEqual = first.getPattern() == second.getPattern() && first.getPattern() == third.getPattern();
+        boolean allPatternsDifferent = (first.getShading() != second.getShading()) && (first.getShading() != third.getShading()) && (second.getShading() != third.getShading());
+        boolean allPatternsEqual = first.getShading() == second.getShading() && first.getShading() == third.getShading();
         boolean patternsFormSet = allPatternsDifferent || allPatternsEqual;
 
         boolean allColorsDifferent = (first.getColor() != second.getColor()) && (first.getColor() != third.getColor()) && (second.getColor() != third.getColor());

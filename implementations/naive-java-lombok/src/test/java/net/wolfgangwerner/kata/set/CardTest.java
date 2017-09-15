@@ -16,7 +16,7 @@ public class CardTest {
     @Test
     public void cardHasPatternItWasCreatedWith() {
         Card c = Card.of(Shape.SQUIGGLE, Shading.STRIPED,Color.RED,Count.ONE);
-        assertEquals(Shading.STRIPED, c.getPattern());
+        assertEquals(Shading.STRIPED, c.getShading());
     }
 
     @Test
