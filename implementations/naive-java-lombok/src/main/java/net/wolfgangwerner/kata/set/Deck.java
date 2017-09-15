@@ -12,7 +12,7 @@ public class Deck {
     protected Map<CardKey, Card> cards = new HashMap<>();
 
     public Deck() {
-        for (Pattern p : Pattern.values()) {
+        for (Shading p : Shading.values()) {
             for (Shape s : Shape.values()) {
                 for (Color c : Color.values()) {
                     for (Count n : Count.values()) {
@@ -23,7 +23,7 @@ public class Deck {
         }
     }
 
-    public Card getCard(Shape s, Pattern p, Color c, Count n) throws NoSuchCardInDeckException {
+    public Card getCard(Shape s, Shading p, Color c, Count n) throws NoSuchCardInDeckException {
         CardKey ck = CardKey.of(s, p, c, n);
         Card result = this.cards.get(ck);
         if (result == null) {
@@ -41,7 +41,7 @@ public class Deck {
         } while (!this.cards.containsKey(ck));
 
         try {
-            result = getCard(ck.getShape(), ck.getPattern(), ck.getColor(), ck.getCount());
+            result = getCard(ck.getShape(), ck.getShading(), ck.getColor(), ck.getCount());
         } catch (NoSuchCardInDeckException e) {
             throw new IllegalStateException("It is not expected for the application to try to draw an non-existing card. This should never happen.", e);
         }
@@ -57,14 +57,14 @@ class CardKey {
     private static final Random RANDOM = new Random();
 
     Shape shape;
-    Pattern pattern;
+    Shading shading;
     Color color;
     Count count;
 
 
     static CardKey random() {
         return of(Shape.values()[RANDOM.nextInt(Shape.values().length)],
-                Pattern.values()[RANDOM.nextInt(Pattern.values().length)],
+                Shading.values()[RANDOM.nextInt(Shading.values().length)],
                 Color.values()[RANDOM.nextInt(Color.values().length)],
                 Count.values()[RANDOM.nextInt(Count.values().length)]
         );

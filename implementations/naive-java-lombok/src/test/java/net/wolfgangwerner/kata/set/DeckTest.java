@@ -10,7 +10,7 @@ public class DeckTest {
     public void deckIsComplete() throws NoSuchCardInDeckException {
         Deck d = new Deck();
         for (Shape s : Shape.values()) {
-            for (Pattern p : Pattern.values()) {
+            for (Shading p : Shading.values()) {
                 for (Color c : Color.values()) {
                     for (Count n : Count.values()) {
                         assertNotNull("Card " + c + " must exist in deck",

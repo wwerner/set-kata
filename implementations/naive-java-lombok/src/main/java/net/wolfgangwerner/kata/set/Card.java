@@ -11,7 +11,7 @@ import lombok.Value;
 public class Card {
 
     private Shape shape;
-    private Pattern pattern;
+    private Shading shading;
     private Color color;
     private Count count;
 }

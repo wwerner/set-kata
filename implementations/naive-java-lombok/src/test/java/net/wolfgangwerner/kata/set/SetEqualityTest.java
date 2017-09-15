@@ -9,9 +9,9 @@ public class SetEqualityTest {
 
     @Test
     public void setsWithSameCardsInDifferentOrderAreConsideredEqual() {
-        Card c0 = Card.of(Shape.PEANUT, Pattern.FULL, Color.GREEN, Count.TWO);
-        Card c1 = Card.of(Shape.PEANUT, Pattern.STRIPED, Color.RED, Count.ONE);
-        Card c2 = Card.of(Shape.ELLIPSE, Pattern.FULL, Color.RED, Count.ONE);
+        Card c0 = Card.of(Shape.SQUIGGLE, Shading.OUTLINED, Color.GREEN, Count.TWO);
+        Card c1 = Card.of(Shape.SQUIGGLE, Shading.STRIPED, Color.RED, Count.ONE);
+        Card c2 = Card.of(Shape.OVAL, Shading.OUTLINED, Color.RED, Count.ONE);
 
         CardSet one = new CardSet(c0, c1, c2);
         CardSet two = new CardSet(c2, c0, c1);
@@ -21,9 +21,9 @@ public class SetEqualityTest {
 
     @Test
     public void setsWithSameCardsInDifferentOrderProduceSameHashcode() {
-        Card c0 = Card.of(Shape.PEANUT, Pattern.FULL, Color.GREEN, Count.TWO);
-        Card c1 = Card.of(Shape.PEANUT, Pattern.STRIPED, Color.RED, Count.ONE);
-        Card c2 = Card.of(Shape.ELLIPSE, Pattern.FULL, Color.RED, Count.ONE);
+        Card c0 = Card.of(Shape.SQUIGGLE, Shading.OUTLINED, Color.GREEN, Count.TWO);
+        Card c1 = Card.of(Shape.SQUIGGLE, Shading.STRIPED, Color.RED, Count.ONE);
+        Card c2 = Card.of(Shape.OVAL, Shading.OUTLINED, Color.RED, Count.ONE);
 
         CardSet one = new CardSet(c0, c1, c2);
         CardSet two = new CardSet(c1, c2, c0);

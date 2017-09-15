@@ -1,0 +1,23 @@
+= SET Card Game Code Kata
+
+SET is an awesome card game that really makes you think and tests your pattern matching ability.
+In this kata, we implement a model of the game and write an algorithm to find matching SETs.
+I think that this kata provides a number of interesting implementation problems
+and allows for implementation in different styles.
+The repository also contains a (hopefully) growing number of example implementations.
+
+If you are not familiar with the game, you https://www.setgame.com/set[should look into it], both for the sake of implementing this kata and for great fun. 
+
+== Rules
+
+Each SET card shows four features with three possible values for each:
+
+* *Color*: red, purple or green
+* *Number*: one, two or three
+* *Shape*: oval, squiggle or diamond
+* *Shading*: solid, striped or outlined
+A deck of SET cards consists of 
+
+== Challenges
+
+
