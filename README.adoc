@@ -38,10 +38,13 @@ are replaced to that there are always at least 12 cards on the table.
 
 == Implementation Challenges
 
+* You can implement the game's flow using an event based approach, e.g. with events like `CardDrawn, `SetFound` or `NoMoreSetsAvailable`.
+* Start with a naive explicit implementation for all properties and possible values. Then, try to find abstractions and implement in a generic way.
+* Start with a naive brute force implementation of the set detection algorithm. Measure the runtime and try to optimize. Reason about it using Big-O notation.
 * Obviously, the algorithm for finding SETs is interesting in terms of runtime behaviour
 * Try to generalize the problem for an arbitrary number of properties and deck sizes. Don't get discouraged: Finding out whether a SET exists in the generalized scenario is NP-complete.
 
 
-If you want to dig deeper, read http://pbg.cs.illinois.edu/papers/set.pdf and https://arxiv.org/pdf/1309.6504.pdf.
+If you want to dig (much) deeper, read http://pbg.cs.illinois.edu/papers/set.pdf and https://arxiv.org/pdf/1309.6504.pdf.
 
 
