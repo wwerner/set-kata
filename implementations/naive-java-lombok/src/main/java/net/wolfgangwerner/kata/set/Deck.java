@@ -16,7 +16,7 @@ public class Deck {
             for (Shape s : Shape.values()) {
                 for (Color c : Color.values()) {
                     for (Count n : Count.values()) {
-                        this.cards.put(CardKey.of(s, p, c, n), Card.of(s,p,c,n));
+                        this.cards.put(CardKey.of(s, p, c, n), Card.of(s, p, c, n));
                     }
                 }
             }

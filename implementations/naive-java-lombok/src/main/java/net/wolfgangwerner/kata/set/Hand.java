@@ -30,6 +30,8 @@ public class Hand {
     }
 
 
+    // this does not work correctly. It produces not all the SETs all the time.
+    // See SetEqualityTest.
     public Set<CardSet> findSets() {
         Set<CardSet> foundSets = new HashSet<>();
 
