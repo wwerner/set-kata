@@ -36,12 +36,13 @@ From the deck, a hand of 12 cards is placed on the table. If a player finds a SE
 In case no one finds a set, three additional cards are added. If the number of cards laid out drops below 12, the missing cards
 are replaced to that there are always at least 12 cards on the table.
 
-== Implementation Challenges
+== Implementation Exercises
 
 * You can implement the game's flow using an event based approach, e.g. with events like `CardDrawn`, `SetFound` or `NoMoreSetsAvailable`.
 * Start with a naive explicit implementation for all properties and possible values. Then, try to find abstractions and implement in a generic way.
 * Start with a naive brute force implementation of the set detection algorithm. Measure the runtime and try to optimize. Reason about it using Big-O notation.
 * Obviously, the algorithm for finding SETs is interesting in terms of runtime behaviour
+* Implement a UI that can draw the cards using only CSS for the cards
 * Try to generalize the problem for an arbitrary number of properties and deck sizes. Don't get discouraged: Finding out whether a SET exists in the generalized scenario is NP-complete.
 
 
