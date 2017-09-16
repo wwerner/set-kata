@@ -1,76 +1,55 @@
 package net.wolfgangwerner.kata.set;
 
-import lombok.ToString;
-import lombok.Value;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
-@ToString
 public class Deck {
-    protected Map<CardKey, Card> cards = new HashMap<>();
+    private final int STANDARD_HAND_SIZE = 12;
 
-    public Deck() {
-        for (Shading p : Shading.values()) {
-            for (Shape s : Shape.values()) {
-                for (Color c : Color.values()) {
-                    for (Count n : Count.values()) {
-                        this.cards.put(CardKey.of(s, p, c, n), Card.of(s, p, c, n));
+    private Stack stack;
+    private Set<Card> cards = new HashSet<>();
+
+    public Deck(Stack stack) {
+        this.stack = stack;
+        for (int i = 0; i < STANDARD_HAND_SIZE; i++) {
+            cards.add(stack.draw());
+        }
+    }
+
+    public Set<Card> cards() {
+        return Collections.unmodifiableSet(cards);
+    }
+
+    private void refill() {
+        int missingCards = STANDARD_HAND_SIZE - cards.size();
+        for (int i = 0; i < missingCards; i++) {
+            this.cards.add(this.stack.draw());
+        }
+    }
+
+
+    // this does not work correctly. It produces not all the SETs all the time.
+    // See SetEqualityTest.
+    public Set<CardSet> findSets() {
+        Set<CardSet> foundSets = new HashSet<>();
+
+        for (Card first : this.cards) {
+            for (Card second : this.cards) {
+                if (first.equals(second)) {
+                    continue;
+                }
+                for (Card third : this.cards) {
+                    if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                        continue;
                     }
+                    CardSet candidate = new CardSet(first, second, third);
+                    if (candidate.isValidSet())
+                        foundSets.add(candidate);
                 }
             }
         }
-    }
-
-    public Card getCard(Shape s, Shading p, Color c, Count n) throws NoSuchCardInDeckException {
-        CardKey ck = CardKey.of(s, p, c, n);
-        Card result = this.cards.get(ck);
-        if (result == null) {
-            throw new NoSuchCardInDeckException("No card found for card key " + ck);
-        }
-        return result;
-    }
-
-    public Card draw() {
-        CardKey ck;
-        Card result;
-        do {
-            ck = CardKey.random();
-            this.cards.get(ck);
-        } while (!this.cards.containsKey(ck));
-
-        try {
-            result = getCard(ck.getShape(), ck.getShading(), ck.getColor(), ck.getCount());
-        } catch (NoSuchCardInDeckException e) {
-            throw new IllegalStateException("It is not expected for the application to try to draw an non-existing card. This should never happen.", e);
-        }
-        this.cards.remove(ck);
-
-        return result;
-    }
-}
-
-@Value(staticConstructor = "of")
-@ToString
-class CardKey {
-    private static final Random RANDOM = new Random();
-
-    Shape shape;
-    Shading shading;
-    Color color;
-    Count count;
-
-
-    static CardKey random() {
-        return of(Shape.values()[RANDOM.nextInt(Shape.values().length)],
-                Shading.values()[RANDOM.nextInt(Shading.values().length)],
-                Color.values()[RANDOM.nextInt(Color.values().length)],
-                Count.values()[RANDOM.nextInt(Count.values().length)]
-        );
-    }
-
-    static CardKey of(Card c) {
-        return of(c.getShape(),c.getShading(),c.getColor(),c.getCount());
+        return foundSets;
     }
 }
